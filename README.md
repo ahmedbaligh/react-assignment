@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# GitHub Public Repos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project allows you to log in using GitHub to view an infinitely scrollable list of your public repositories. You can also add comments to each of your repos.
 
-## Available Scripts
+## Getting started
 
-In the project directory, you can run:
+Make sure to have `node` and `yarn` installed.
 
-### `yarn start`
+### Installing Dependencies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`cd` into the project's root directory and run:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+yarn
+```
 
-### `yarn test`
+### Setting up the API
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project uses the GitHub API, to be able to run the project, see instructions listed [here](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app).
 
-### `yarn build`
+**_Note: For this example, while creating the OAuth app, you can set your Homepage URL to [http://localhost:3000/](http://localhost:3000/) and Authorization callback URL to [http://localhost:3000/signin](http://localhost:3000/signin), if you are running your app locally._**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Now create a `.env.local` file in the root directory of the project and inside it set the following:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```env
+REACT_APP_CLIENT_ID=<Your GitHub Client ID>
+REACT_APP_CLIENT_SECRET=<Your GitHub Client Secret>
+REACT_APP_REDIRECT_URL=http://localhost:3000/signin
+PROXY_PORT=8000
+REACT_APP_PROXY_URL=http://localhost:8000/authenticate
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running the App
 
-### `yarn eject`
+Run the proxy server by executing the following in the root directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+node ./server
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Now to the run the React server, run (in separate shell):
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+yarn start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app should now be running at [localhost:3000](http://localhost:3000/).
