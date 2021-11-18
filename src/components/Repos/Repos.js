@@ -42,11 +42,11 @@ const Repos = ({ user }) => {
         {repos.map(repo => (
           <Repo
             key={repo.id}
+            id={repo.id}
             name={repo.name}
             description={repo.description}
             url={repo.html_url}
             language={repo.language}
-            liveURL={repo.homepage}
             stars={repo.stargazers_count}
             forks={repo.forks_count}
           />

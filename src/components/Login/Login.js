@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { login } from '../../redux/actions';
 import LoginPage from './Login.styles';
+import { Loader } from '../';
 
 const baseURL = 'https://github.com/login/oauth/authorize?scope=user';
 
@@ -53,9 +54,7 @@ const Login = ({ isAuthed, client_id, redirect_url, proxy_url, login }) => {
 
           <div className="login-container">
             {data.isLoading ? (
-              <div className="loader-container">
-                <div className="loader"></div>
-              </div>
+              <Loader />
             ) : (
               <a
                 className="login-link"

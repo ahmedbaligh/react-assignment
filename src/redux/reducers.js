@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from './actions';
+import { ADD_COMMENT, LOGIN, LOGOUT } from './actions';
 
 const initialState = {
   isAuthed: JSON.parse(localStorage.getItem('isAuthed')) ?? false,
@@ -6,7 +6,8 @@ const initialState = {
   client_id: process.env.REACT_APP_CLIENT_ID,
   redirect_url: process.env.REACT_APP_REDIRECT_URL,
   client_secret: process.env.REACT_APP_CLIENT_SECRET,
-  proxy_url: process.env.REACT_APP_PROXY_URL
+  proxy_url: process.env.REACT_APP_PROXY_URL,
+  comments: JSON.parse(localStorage.getItem('comments')) ?? {}
 };
 
 export const auth = (state = initialState, action) => {
@@ -22,6 +23,17 @@ export const auth = (state = initialState, action) => {
     case LOGOUT:
       localStorage.clear();
       return { ...state, isAuthed: false, user: null };
+
+    case ADD_COMMENT:
+      const { comment, repoID } = action.payload;
+      const comments = {
+        ...state.comments,
+        [repoID]: [comment, ...(state.comments[repoID] ?? [])]
+      };
+
+      localStorage.setItem('comments', JSON.stringify(comments));
+
+      return { ...state, comments };
 
     default:
       return state;
