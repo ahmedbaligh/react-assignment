@@ -1,22 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { login, logout } from './redux/actions';
+import { Login, Header } from './components';
 
-const App = ({ user, login, logout }) => {
+const App = () => {
   return (
-    <div>
-      <div>GitHub React Assignment</div>
-      <h1>User: {user}</h1>
-    </div>
+    <Router>
+      <Header />
+      <Switch>
+        <Route path="/signin" component={Login} />
+        {/* <Route path="/" component={Home}/> */}
+      </Switch>
+    </Router>
   );
 };
 
-const mapStateToProps = ({ user }) => ({ user });
-
-const mapDispatchToProps = dispatch => ({
-  login: (user, isAuthed = true) => dispatch(login(user, isAuthed)),
-  logout: () => dispatch(logout())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
