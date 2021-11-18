@@ -11,7 +11,12 @@ const Header = ({ isAuthed, user, logout }) => {
 
       {isAuthed && (
         <div className="user-container">
-          <span className="user-info">Logged in as {user?.name}</span>
+          <div className="user-info">
+            <span className="logged-text">
+              Logged in as <span className="user-name">{user?.name}</span>
+            </span>
+            <img className="user-avatar" src={user?.avatar_url} alt="Avatar" />
+          </div>
           <button className="logout" onClick={logout}>
             Logout
           </button>

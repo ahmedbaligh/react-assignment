@@ -1,13 +1,14 @@
-import Styled from 'styled-components';
+import styled from 'styled-components';
 
-export default Styled.header`
+export default styled.header`
   background: rgb(160, 198, 209);
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
 
   .app-name {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 500;
   }
 
   .user-container {
@@ -17,24 +18,41 @@ export default Styled.header`
     gap: 50px;
 
     .user-info {
-      font-size: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      .logged-text {
+        font-size: 1rem;
+
+        .user-name {
+          font-style: italic;
+          padding-inline-start: 5px;
+          color: #0080ff;
+        }
+      }
+
+      .user-avatar {
+        border-radius: 50%;
+        max-width: 40px;
+      }
     }
 
     .logout {
       all: unset;
-      cursor: pointer;
       transition: 0.3s;
       width: 100px;
       height: 35px;
-      background-color: #0041C2;
+      background-color: #0041c2;
       color: #fff;
       text-align: center;
       border-radius: 3px;
-      border: 1px solid #0041C2;
+      border: 1px solid #0041c2;
 
-      &:hover{
+      &:hover {
         background-color: #fff;
-        color: #0041C2;
+        color: #0041c2;
       }
     }
   }
