@@ -1,6 +1,6 @@
-import Styled from 'styled-components';
+import styled from 'styled-components';
 
-export default Styled.main`
+export default styled.main`
   .container {
     display: flex;
     justify-content: center;
@@ -42,43 +42,18 @@ export default Styled.main`
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
 
         > .login-link {
           text-decoration: none;
           color: #fff;
           text-transform: uppercase;
-          cursor: default;
           display: flex;
-          align-items: center;          
+          align-items: center;
           height: 40px;
 
           > span:nth-child(2) {
             margin-left: 5px;
-          }
-        }
-
-        .loader-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 40px;
-        }
-
-        .loader {
-          border: 4px solid #f3f3f3;
-          border-top: 4px solid #3498db;
-          border-radius: 50%;
-          width: 12px;
-          height: 12px;
-          animation: spin 2s linear infinite;
-        }
-
-        @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
           }
         }
       }

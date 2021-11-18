@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { Login, Header } from './components';
+import { Login, Header, Home } from './components';
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       <Header />
       <Switch>
         <Route path="/signin" component={Login} />
-        {/* <Route path="/" component={Home}/> */}
+        <Route path="/" component={Home} />
       </Switch>
     </Router>
   );

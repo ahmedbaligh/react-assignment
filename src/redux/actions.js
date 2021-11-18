@@ -1,7 +1,7 @@
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 
-export const login = (user, isAuthed) => ({
+export const login = ({ user, isAuthed }) => ({
   type: LOGIN,
   payload: {
     user,

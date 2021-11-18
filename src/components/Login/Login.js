@@ -81,7 +81,7 @@ const mapStateToProps = ({ isAuthed, client_id, redirect_url, proxy_url }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  login: (user, isAuthed) => dispatch(login(user, isAuthed))
+  login: ({ user, isAuthed }) => dispatch(login({ user, isAuthed }))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
